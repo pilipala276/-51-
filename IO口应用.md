@@ -41,7 +41,7 @@ DELAYMS:
 D0: 	MOV R4,#248
 		DJNZ R4,$  ;DJNZ,将寄存器或直接寻址地址字节减一，等于0向下运行，不等于零跳转到指定位置
 		DJNZ R3,D0
-		RET		;调用堆栈
+		RET	    ;调用堆栈
 	
 ;循环0.2s，通过DJNZ实现
 DELAY: 	MOV R5,#20
