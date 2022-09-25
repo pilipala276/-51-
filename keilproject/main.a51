@@ -18,7 +18,7 @@ K11: 	RR A
 		LCALL DELAY
 		SJMP MAIN
 
-;K1被按下，先延时一下判断是否误触发，再使LED左移，右移后在延时0.2s返回main函数
+;K2被按下，先延时一下判断是否误触发，再使LED左移，右移后在延时0.2s返回main函数
 K2: 	LCALL DELAYMS 
 		JNB P1.1,K22
 		SJMP MAIN

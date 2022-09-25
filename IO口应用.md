@@ -26,7 +26,7 @@ K11: 	RR A
 		LCALL DELAY
 		SJMP MAIN
 
-;K1被按下，先延时一下判断是否误触发，再使LED左移，右移后在延时0.2s返回main函数
+;K2被按下，先延时一下判断是否误触发，再使LED左移，右移后在延时0.2s返回main函数
 K2: 	LCALL DELAYMS 
 		JNB P1.1,K22
 		SJMP MAIN
@@ -54,3 +54,7 @@ D2: 	MOV R7,#248
 
 END
 ```
+
+遇到的问题与解决方法：
+* 如何创建工程
+* keil仿真调试没问题，但是proteus仿真led却只能移动一次
