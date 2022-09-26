@@ -4,7 +4,7 @@
 * 按键电路：采用P1口，按键按下，端口置0，(有点好奇这里为什么要上拉电阻，P1口不是带内部上拉电阻吗)
 * LED电路：采用P0口，带上拉电阻
 
-软件部分
+IO口软件部分
 ```asm
 ORG 00H ;定义程序起始位置
 AJMP START
@@ -41,7 +41,7 @@ DELAYMS:
 D0: 	MOV R4,#248
 		DJNZ R4,$  ;DJNZ,将寄存器或直接寻址地址字节减一，等于0向下运行，不等于零跳转到指定位置
 		DJNZ R3,D0
-		RET	    ;调用堆栈
+		RET		;调用堆栈
 	
 ;循环0.2s，通过DJNZ实现
 DELAY: 	MOV R5,#20
@@ -52,7 +52,58 @@ D2: 	MOV R7,#248
 		DJNZ R5,D1
 		RET
 
-END
+		END
+```
+流水灯软件部分
+```asm
+		ORG 00H
+		AJMP START
+		ORG 0100H
+			
+START: 	MOV A,#0FEH
+		MOV P0,A
+		SETB 00H
+		
+MAIN: 	JNB P1.0,K1 ;判断按键是否被按下
+RUN:	JB 00H,LRUN	;根据00H位置的值判断流水灯方向
+		JNB 00H,RRUN
+		SJMP MAIN
+		
+K1:		LCALL DELAYMS	;按键被按下，00H位置的值取反
+		JNB P1.0,K11
+		SJMP RUN
+K11: 	CPL 00H
+		SJMP RUN
+		
+	
+
+		
+LRUN:	RL A 	;流水灯向左循环
+		MOV P0,A
+		LCALL DELAY
+		SJMP MAIN
+		
+RRUN:	RR A	;流水灯向右循环
+		MOV P0,A
+		LCALL DELAY
+		SJMP MAIN
+		
+DELAYMS:
+		MOV R3,#60
+D0:		MOV R4,#248
+		DJNZ R4,$
+		DJNZ R3,D0
+		RET
+		
+DELAY:	MOV R5,#25
+D1: 	MOV R6,#20
+D2:		MOV R7,#248
+		DJNZ R7,$
+		DJNZ R6,D2
+		DJNZ R5,D1
+		RET
+
+		END
 ```
 
 遇到的问题与解决方法：
