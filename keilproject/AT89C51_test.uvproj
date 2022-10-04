@@ -392,9 +392,9 @@
               <FilePath>.\lab1.txt</FilePath>
             </File>
             <File>
-              <FileName>lab2.txt</FileName>
+              <FileName>..\..\Proteus\DATA\keilproject\lab1_.txt</FileName>
               <FileType>5</FileType>
-              <FilePath>.\lab2.txt</FilePath>
+              <FilePath>$TC_ROOT$\..\..\Proteus\DATA\keilproject\lab1_.txt</FilePath>
             </File>
           </Files>
         </Group>
