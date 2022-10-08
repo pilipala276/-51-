@@ -401,6 +401,11 @@
               <FileType>5</FileType>
               <FilePath>.\lab2.txt</FilePath>
             </File>
+            <File>
+              <FileName>lab2_.txt</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lab2_.txt</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
