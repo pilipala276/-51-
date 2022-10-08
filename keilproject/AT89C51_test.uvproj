@@ -396,6 +396,11 @@
               <FileType>5</FileType>
               <FilePath>$TC_ROOT$\..\..\Proteus\DATA\keilproject\lab1_.txt</FilePath>
             </File>
+            <File>
+              <FileName>lab2.txt</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lab2.txt</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

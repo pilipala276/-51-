@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  MAIN                                                                 09/26/2022 20:32:42 PAGE     1
+A51 MACRO ASSEMBLER  MAIN                                                                 10/08/2022 20:36:37 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.2.7.0
@@ -8,55 +8,180 @@ ASSEMBLER INVOKED BY: D:\Keil_v5\C51\BIN\A51.EXE main.a51 SET(SMALL) DEBUG PRINT
 
 LOC  OBJ            LINE     SOURCE
 
-0000                   1                     ORG 00H
-0000 2100              2                     AJMP START
-0100                   3                     ORG 0100H
-                       4                             
-0100 74FE              5     START:  MOV A,#0FEH
-0102 F580              6                     MOV P0,A
-0104 D200              7                     SETB 00H
-                       8                     
-0106 309008            9     MAIN:   JNB P1.0,K1
-0109 200011           10     RUN:    JB 00H,LRUN
-010C 300016           11                     JNB 00H,RRUN
-010F 80F5             12                     SJMP MAIN
-                      13                     
-0111 12012D           14     K1:             LCALL DELAYMS
-0114 309002           15                     JNB P1.0,K11
-0117 80F0             16                     SJMP RUN
-0119 B200             17     K11:    CPL 00H
-011B 80EC             18                     SJMP RUN
-                      19                     
-                      20             
-                      21     
-                      22                     
-011D 23               23     LRUN:   RL A
-011E F580             24                     MOV P0,A
-0120 120136           25                     LCALL DELAY
-0123 80E1             26                     SJMP MAIN
-                      27                     
-0125 03               28     RRUN:   RR A
-0126 F580             29                     MOV P0,A
-0128 120136           30                     LCALL DELAY
-012B 80D9             31                     SJMP MAIN
-                      32                     
-012D                  33     DELAYMS:
-012D 7B3C             34                     MOV R3,#60
-012F 7CF8             35     D0:             MOV R4,#248
-0131 DCFE             36                     DJNZ R4,$
-0133 DBFA             37                     DJNZ R3,D0
-0135 22               38                     RET
-                      39                     
-0136 7D19             40     DELAY:  MOV R5,#25
-0138 7E14             41     D1:     MOV R6,#20
-013A 7FF8             42     D2:             MOV R7,#248
-013C DFFE             43                     DJNZ R7,$
-013E DEFA             44                     DJNZ R6,D2
-0140 DDF6             45                     DJNZ R5,D1
-0142 22               46                     RET
-                      47     
-                      48                     END
-A51 MACRO ASSEMBLER  MAIN                                                                 09/26/2022 20:32:42 PAGE     2
+                       1     ;***********************π¶ƒ‹Àµ√˜*************************
+                       2     ;”√AT89C52µƒMCUÕ‚≤ø÷–∂œ0º«¬º÷–∂œ¥Œ ≤¢œ‘ æ
+                       3     ;¡¨œﬂ∑Ω ΩŒ™P0ø⁄¡¨Ω” ¬Îπ‹∂Œ—°SA-SH£¨P32¡¨Ω”∞¥º¸◊˜Œ™÷–∂œ ‰»Î
+                       4     ;≥Ã–Ú∆Ù∂Ø ±£¨≥ı ºªØœ‘ æ“ªœ¬…Ë∂®÷µ£¨”–∞¥º¸∞¥œ¬Ω¯»Î÷–∂œ£¨º∆ +1
+                       5     ;********************************************************
+0000                   6     ORG 0000H
+0000 2100              7     AJMP MAIN
+                       8     
+0003                   9     ORG 0003H
+0003 02014A           10     LJMP INTT0
+                      11     
+                      12     ;--------------------------------------------------------
+                      13     
+0100                  14     ORG 0100H
+0100                  15     MAIN:   ;************÷˜≥Ã–Ú******************************
+0100 7590FF           16             MOV P1,#0FFH
+0103                  17     LOOP:   
+0103 754000           18             MOV 40H,#00H    ;œµÕ≥≥ı º…Ë÷√º∆ ≥ı÷µ0000
+0106                  19     LOOP0:
+0106 753900           20             MOV 39H,#00H
+0109 753800           21             MOV 38H,#00H
+010C 753702           22             MOV 37H,#02H    
+                      23             
+010F 753000           24             MOV 30H,#00H    ; ¬Îπ‹œ‘ æª∫¥Ê£¨«ßŒª
+0112 752900           25             MOV 29H,#00H    ; ¬Îπ‹œ‘ æª∫¥Ê£¨∞ŸŒª
+0115 752800           26             MOV 28H,#00H    ; ¬Îπ‹œ‘ æª∫¥Ê£¨ ÆŒª
+0118 752700           27             MOV 27H,#00H    ; ¬Îπ‹œ‘ æª∫¥Ê£¨∏ˆŒª
+                      28             
+011B 854030           29             MOV 30H,40H             ;≥ı÷µ¥´µ›
+011E 853929           30             MOV 29H,39H
+0121 853828           31             MOV 28H,38H
+0124 853727           32             MOV 27H,37H
+                      33             
+0127 9001CE           34             MOV DPTR,#TAB
+012A 7950             35             MOV R1,#50H
+012C 7A50             36             MOV R2,#50H
+012E                  37     JJJ:                            ;œ‘ æœµÕ≥…Ë÷√µƒ≥ı º÷µ
+012E 1201A1           38             LCALL DISPLAY   
+0131 D9FB             39             DJNZ R1,JJJ 
+                      40             ;DJNZ R2,JJJ
+                      41             
+0133 753000           42             MOV 30H,#00H    
+0136 752900           43             MOV 29H,#00H    
+0139 752800           44             MOV 28H,#00H    
+013C 752700           45             MOV 27H,#00H    
+013F D2AF             46             SETB EA                 ;ø™∆ÙCPU÷–∂œ
+0141 D288             47             SETB IT0                ;±ﬂ—ÿ¥•∑¢
+0143 D2A8             48             SETB EX0                ;ø™∆ÙÕ‚≤ø÷–∂œ0
+                      49             
+0145                  50     KKK:    
+0145 1201A1           51             LCALL DISPLAY   ;—≠ªØµ˜”√œ‘ æ◊”≥Ã–Ú
+0148 2145             52             AJMP KKK
+                      53             
+                      54     
+                      55     ;***********************π¶ƒ‹Àµ√˜*************************
+                      56     ;*******************Õ‚≤ø÷–∂œ0◊”≥Ã–Ú**********************
+                      57     ;********************************************************
+A51 MACRO ASSEMBLER  MAIN                                                                 10/08/2022 20:36:37 PAGE     2
+
+014A                  58     INTT0:
+014A 0527             59             INC 27H                 ;¿€º”
+014C E527             60             MOV A,27H               ;≈–∂œ∏ˆŒª «∑ÒŒ™10£¨≤ªœ‡µ»◊™“∆£¨œ‡µ»Ω¯“ª
+014E B40A21           61             CJNE A,#10,LOOP1
+0151 752700           62             MOV 27H,#00H
+                      63             
+0154 0528             64             INC 28H                 
+0156 E528             65             MOV A,28H               ;≈–∂œ ÆŒª «∑ÒŒ™10£¨≤ªœ‡µ»◊™“∆£¨œ‡µ»Ω¯“ª
+0158 B40A17           66             CJNE A,#10,LOOP1
+015B 752800           67             MOV 28H,#00H
+                      68             
+015E 0529             69             INC 29H                 
+0160 E529             70             MOV A,29H               ;≈–∂œ∞ŸŒª «∑ÒŒ™10£¨≤ªœ‡µ»◊™“∆£¨œ‡µ»Ω¯“ª
+0162 B40A0D           71             CJNE A,#10,LOOP1
+0165 752900           72             MOV 29H,#00H
+                      73             
+0168 0530             74             INC 30H                 
+016A E530             75             MOV A,30H               ;≈–∂œ«ßŒª «∑ÒŒ™10£¨≤ªœ‡µ»◊™“∆£¨œ‡µ»«Â¡„
+016C B40A03           76             CJNE A,#10,LOOP1
+016F 753000           77             MOV 30H,#00H
+                      78             
+0172                  79     LOOP1:
+0172 E527             80             MOV A,27H               ;≈–∂œº∆ ÷µ «∑Ò¥ÔµΩ…Ë∂®÷µ
+0174 C3               81             CLR C
+0175 9537             82             SUBB A,37H
+0177 7027             83             JNZ LOOP2
+                      84             
+0179 E528             85             MOV A,28H               
+017B C3               86             CLR C
+017C 9538             87             SUBB A,38H
+017E 7020             88             JNZ LOOP2
+                      89             
+0180 E529             90             MOV A,29H               
+0182 C3               91             CLR C
+0183 9539             92             SUBB A,39H
+0185 7019             93             JNZ LOOP2
+                      94             
+0187 E530             95             MOV A,30H               
+0189 C3               96             CLR C
+018A 9540             97             SUBB A,40H
+018C 7012             98             JNZ LOOP2
+                      99             
+018E 7580FF          100             MOV P0,#0FFH            ;º∆ ÷µ «∑Ò¥ÔµΩ…Ë∂®÷µ£¨«Â¡„
+0191 753000          101             MOV 30H,#00H            
+0194 752900          102             MOV 29H,#00H    
+0197 752800          103             MOV 28H,#00H    
+019A 752700          104             MOV 27H,#00H
+019D 7590FF          105             MOV P1,#0FFH
+                     106             
+01A0                 107     LOOP2:
+01A0 32              108             RETI
+                     109             
+                     110     ;***********************π¶ƒ‹Àµ√˜*************************
+                     111     ;**********************œ‘ æ◊”≥Ã–Ú************************
+                     112     ;********************************************************
+01A1                 113     DISPLAY:
+                     114             ;MOV P1,#0FFH
+                     115             
+01A1 E530            116             MOV A,30H                       ; ¬Îπ‹œ‘ æ«ßŒª 
+01A3 93              117             MOVC A,@A+DPTR
+01A4 F580            118             MOV P0,A
+01A6 D290            119             SETB P1.0
+01A8 31D8            120             ACALL DELAY
+01AA C290            121             CLR P1.0
+                     122             
+01AC E529            123             MOV A,29H                       ; ¬Îπ‹œ‘ æ∞ŸŒª 
+A51 MACRO ASSEMBLER  MAIN                                                                 10/08/2022 20:36:37 PAGE     3
+
+01AE 93              124             MOVC A,@A+DPTR
+01AF F580            125             MOV P0,A
+01B1 D291            126             SETB P1.1
+01B3 31D8            127             ACALL DELAY
+01B5 C291            128             CLR P1.1
+                     129             
+01B7 E528            130             MOV A,28H                       ; ¬Îπ‹œ‘ æ ÆŒª 
+01B9 93              131             MOVC A,@A+DPTR
+01BA F580            132             MOV P0,A
+01BC D292            133             SETB P1.2
+01BE 31D8            134             ACALL DELAY
+01C0 C292            135             CLR P1.2
+                     136             
+01C2 E527            137             MOV A,27H                       ; ¬Îπ‹œ‘ æ∏ˆŒª 
+01C4 93              138             MOVC A,@A+DPTR
+01C5 F580            139             MOV P0,A
+01C7 D293            140             SETB P1.3
+01C9 31D8            141             ACALL DELAY
+01CB C293            142             CLR P1.3
+                     143             
+                     144             
+01CD 22              145             RET
+                     146             
+                     147     ;=========================================
+01CE                 148     TAB:                                    ; ¬Îπ‹œ‘ æ ◊÷–Ë“™¥´»Îµƒ÷µ
+01CE C0              149             DB      0C0H;0
+01CF F9              150             DB      0F9H;1
+01D0 A4              151             DB      0A4H;2
+01D1 B0              152             DB      0B0H;3
+01D2 99              153             DB      099H;4
+01D3 92              154             DB      092H;5
+01D4 82              155             DB      082H;6
+01D5 F8              156             DB      0F8H;7
+01D6 80              157             DB      080H;8
+01D7 90              158             DB      090H;9
+                     159     ;=========================================
+01D8                 160     DELAY:                                  ;—” ±∫Ø 
+01D8 7E10            161                     MOV R6,#10H
+01DA                 162     DEL1:
+01DA 7F10            163                     MOV R7,#10H
+01DC DFFE            164                     DJNZ R7,$
+01DE DEFA            165                     DJNZ R6,DEL1
+01E0 22              166                     RET
+                     167     ;=========================================
+                     168     
+                     169     END
+A51 MACRO ASSEMBLER  MAIN                                                                 10/08/2022 20:36:37 PAGE     4
 
 SYMBOL TABLE LISTING
 ------ ----- -------
@@ -64,20 +189,23 @@ SYMBOL TABLE LISTING
 
 N A M E             T Y P E  V A L U E   ATTRIBUTES
 
-D0 . . . . . . . .  C ADDR   012FH   A   
-D1 . . . . . . . .  C ADDR   0138H   A   
-D2 . . . . . . . .  C ADDR   013AH   A   
-DELAY. . . . . . .  C ADDR   0136H   A   
-DELAYMS. . . . . .  C ADDR   012DH   A   
-K1 . . . . . . . .  C ADDR   0111H   A   
-K11. . . . . . . .  C ADDR   0119H   A   
-LRUN . . . . . . .  C ADDR   011DH   A   
-MAIN . . . . . . .  C ADDR   0106H   A   
+DEL1 . . . . . . .  C ADDR   01DAH   A   
+DELAY. . . . . . .  C ADDR   01D8H   A   
+DISPLAY. . . . . .  C ADDR   01A1H   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+EX0. . . . . . . .  B ADDR   00A8H.0 A   
+INTT0. . . . . . .  C ADDR   014AH   A   
+IT0. . . . . . . .  B ADDR   0088H.0 A   
+JJJ. . . . . . . .  C ADDR   012EH   A   
+KKK. . . . . . . .  C ADDR   0145H   A   
+LOOP . . . . . . .  C ADDR   0103H   A   
+LOOP0. . . . . . .  C ADDR   0106H   A   
+LOOP1. . . . . . .  C ADDR   0172H   A   
+LOOP2. . . . . . .  C ADDR   01A0H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
 P0 . . . . . . . .  D ADDR   0080H   A   
 P1 . . . . . . . .  D ADDR   0090H   A   
-RRUN . . . . . . .  C ADDR   0125H   A   
-RUN. . . . . . . .  C ADDR   0109H   A   
-START. . . . . . .  C ADDR   0100H   A   
+TAB. . . . . . . .  C ADDR   01CEH   A   
 
 
 REGISTER BANK(S) USED: 0 
