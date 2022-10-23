@@ -1,0 +1,52 @@
+PP EQU P0.0
+ORG 0000H
+LJMP START
+
+ORG 000BH
+LJMP T0INT
+
+ORG 0100H
+START: 
+	MOV TH0,#0D8H
+	MOV TL0,#0F0H	;10ms
+	MOV TMOD,#01H ;定时器 0 工作方式 1
+	MOV 30H,#01H	;数码管位选
+	MOV 31H,#00H	;数码管索引
+	SETB EA
+	SETB ET0
+	SETB TR0
+MAIN:
+AJMP MAIN
+
+
+
+T0INT:	;定时器 0中断 工作方式 1
+	MOV TH0,#0D8H	;重设定时器初值
+	MOV TL0,#0F0H ;12M 晶振，形成 10 毫秒中断
+	MOV P2,#0X00	;停止位选更改数据
+	MOV A,31H
+	MOV DPTR,#DAT
+	MOVC A,@A+DPTR
+	MOV P0,A
+	MOV P2,30H	;开启位选
+	MOV A,30H	;位选右移
+	RL A
+	MOV 30H,A	
+	INC 31H ;索引+1
+	ANL 31H,#07H
+	SETB TR0	;开启终中断
+	RETI
+
+DAT:	;数码管数字数据存贮
+	DB	0F9H;1
+	DB	0A4H;2
+	DB	0B0H;3
+	DB	099H;4
+	DB	092H;5
+	DB	082H;6
+	DB	0F8H;7
+	DB	080H;8
+	DB	090H;9
+	DB	0C0H;0
+
+END

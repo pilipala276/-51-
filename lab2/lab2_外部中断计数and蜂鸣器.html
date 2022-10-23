@@ -1,0 +1,562 @@
+<!DOCTYPE html><html><head>
+      <title>lab2_&#x5916;&#x90E8;&#x4E2D;&#x65AD;&#x8BA1;&#x6570;and&#x8702;&#x9E23;&#x5668;</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\xianyu\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.3\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <p>&#x5916;&#x90E8;&#x4E2D;&#x65AD;&#x8BA1;&#x6570;&#x5B9E;&#x9A8C;&#x786C;&#x4EF6;&#x90E8;&#x5206;<br>
+<img src="%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD%E8%AE%A1%E6%95%B0.png" alt></p>
+<p>&#x5916;&#x90E8;&#x4E2D;&#x65AD;&#x8BA1;&#x6570;&#x5B9E;&#x9A8C;&#x8F6F;&#x4EF6;&#x90E8;&#x5206;</p>
+<pre data-role="codeBlock" data-info="asm" class="language-asm"><code>;***********************&#x529F;&#x80FD;&#x8BF4;&#x660E;*************************
+;&#x7528;AT89C52&#x7684;MCU&#x5916;&#x90E8;&#x4E2D;&#x65AD;0&#x8BB0;&#x5F55;&#x4E2D;&#x65AD;&#x6B21;&#x6570;&#x5E76;&#x663E;&#x793A;
+;&#x8FDE;&#x7EBF;&#x65B9;&#x5F0F;&#x4E3A;P0&#x53E3;&#x8FDE;&#x63A5;&#x6570;&#x7801;&#x7BA1;&#x6BB5;&#x9009;SA-SH&#xFF0C;P32&#x8FDE;&#x63A5;&#x6309;&#x952E;&#x4F5C;&#x4E3A;&#x4E2D;&#x65AD;&#x8F93;&#x5165;
+;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x65F6;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x663E;&#x793A;&#x4E00;&#x4E0B;&#x8BBE;&#x5B9A;&#x503C;&#xFF0C;&#x6709;&#x6309;&#x952E;&#x6309;&#x4E0B;&#x8FDB;&#x5165;&#x4E2D;&#x65AD;&#xFF0C;&#x8BA1;&#x6570;+1
+;********************************************************
+ORG 0000H
+AJMP MAIN
+
+ORG 0003H
+LJMP INTT0
+
+;--------------------------------------------------------
+
+ORG 0100H
+MAIN:	;************&#x4E3B;&#x7A0B;&#x5E8F;******************************
+	MOV P1,#0FFH
+LOOP:	
+	MOV 40H,#00H	;&#x7CFB;&#x7EDF;&#x521D;&#x59CB;&#x8BBE;&#x7F6E;&#x8BA1;&#x6570;&#x521D;&#x503C;0000
+LOOP0:
+	MOV 39H,#00H
+	MOV 38H,#00H
+	MOV 37H,#02H	
+	
+	MOV 30H,#00H	;&#x6570;&#x7801;&#x7BA1;&#x663E;&#x793A;&#x7F13;&#x5B58;&#xFF0C;&#x5343;&#x4F4D;
+	MOV 29H,#00H	;&#x6570;&#x7801;&#x7BA1;&#x663E;&#x793A;&#x7F13;&#x5B58;&#xFF0C;&#x767E;&#x4F4D;
+	MOV 28H,#00H	;&#x6570;&#x7801;&#x7BA1;&#x663E;&#x793A;&#x7F13;&#x5B58;&#xFF0C;&#x5341;&#x4F4D;
+	MOV 27H,#00H	;&#x6570;&#x7801;&#x7BA1;&#x663E;&#x793A;&#x7F13;&#x5B58;&#xFF0C;&#x4E2A;&#x4F4D;
+	
+	MOV 30H,40H		;&#x521D;&#x503C;&#x4F20;&#x9012;
+	MOV 29H,39H
+	MOV 28H,38H
+	MOV 27H,37H
+	
+	MOV DPTR,#TAB
+	MOV R1,#50H
+	MOV R2,#50H
+JJJ:				;&#x663E;&#x793A;&#x7CFB;&#x7EDF;&#x8BBE;&#x7F6E;&#x7684;&#x521D;&#x59CB;&#x503C;
+	LCALL DISPLAY	
+	DJNZ R1,JJJ 
+	;DJNZ R2,JJJ
+	
+	MOV 30H,#00H	
+	MOV 29H,#00H	
+	MOV 28H,#00H	
+	MOV 27H,#00H	
+	SETB EA			;&#x5F00;&#x542F;CPU&#x4E2D;&#x65AD;
+	SETB IT0		;&#x8FB9;&#x6CBF;&#x89E6;&#x53D1;
+	SETB EX0		;&#x5F00;&#x542F;&#x5916;&#x90E8;&#x4E2D;&#x65AD;0
+	
+KKK:	
+	LCALL DISPLAY	;&#x5FAA;&#x5316;&#x8C03;&#x7528;&#x663E;&#x793A;&#x5B50;&#x7A0B;&#x5E8F;
+	AJMP KKK
+	
+
+;***********************&#x529F;&#x80FD;&#x8BF4;&#x660E;*************************
+;*******************&#x5916;&#x90E8;&#x4E2D;&#x65AD;0&#x5B50;&#x7A0B;&#x5E8F;**********************
+;********************************************************
+INTT0:
+	INC 27H			;&#x7D2F;&#x52A0;
+	MOV A,27H		;&#x5224;&#x65AD;&#x4E2A;&#x4F4D;&#x662F;&#x5426;&#x4E3A;10&#xFF0C;&#x4E0D;&#x76F8;&#x7B49;&#x8F6C;&#x79FB;&#xFF0C;&#x76F8;&#x7B49;&#x8FDB;&#x4E00;
+	CJNE A,#10,LOOP1
+	MOV 27H,#00H
+	
+	INC 28H			
+	MOV A,28H		;&#x5224;&#x65AD;&#x5341;&#x4F4D;&#x662F;&#x5426;&#x4E3A;10&#xFF0C;&#x4E0D;&#x76F8;&#x7B49;&#x8F6C;&#x79FB;&#xFF0C;&#x76F8;&#x7B49;&#x8FDB;&#x4E00;
+	CJNE A,#10,LOOP1
+	MOV 28H,#00H
+	
+	INC 29H			
+	MOV A,29H		;&#x5224;&#x65AD;&#x767E;&#x4F4D;&#x662F;&#x5426;&#x4E3A;10&#xFF0C;&#x4E0D;&#x76F8;&#x7B49;&#x8F6C;&#x79FB;&#xFF0C;&#x76F8;&#x7B49;&#x8FDB;&#x4E00;
+	CJNE A,#10,LOOP1
+	MOV 29H,#00H
+	
+	INC 30H			
+	MOV A,30H		;&#x5224;&#x65AD;&#x5343;&#x4F4D;&#x662F;&#x5426;&#x4E3A;10&#xFF0C;&#x4E0D;&#x76F8;&#x7B49;&#x8F6C;&#x79FB;&#xFF0C;&#x76F8;&#x7B49;&#x6E05;&#x96F6;
+	CJNE A,#10,LOOP1
+	MOV 30H,#00H
+	
+LOOP1:
+	MOV A,27H		;&#x5224;&#x65AD;&#x8BA1;&#x6570;&#x503C;&#x662F;&#x5426;&#x8FBE;&#x5230;&#x8BBE;&#x5B9A;&#x503C;
+	CLR C
+	SUBB A,37H
+	JNZ LOOP2
+	
+	MOV A,28H		
+	CLR C
+	SUBB A,38H
+	JNZ LOOP2
+	
+	MOV A,29H		
+	CLR C
+	SUBB A,39H
+	JNZ LOOP2
+	
+	MOV A,30H		
+	CLR C
+	SUBB A,40H
+	JNZ LOOP2
+	
+	MOV P0,#0FFH		;&#x8BA1;&#x6570;&#x503C;&#x662F;&#x5426;&#x8FBE;&#x5230;&#x8BBE;&#x5B9A;&#x503C;&#xFF0C;&#x6E05;&#x96F6;
+	MOV 30H,#00H		
+	MOV 29H,#00H	
+	MOV 28H,#00H	
+	MOV 27H,#00H
+	MOV P1,#0FFH
+	
+LOOP2:
+	RETI
+	
+;***********************&#x529F;&#x80FD;&#x8BF4;&#x660E;*************************
+;**********************&#x663E;&#x793A;&#x5B50;&#x7A0B;&#x5E8F;************************
+;********************************************************
+DISPLAY:
+	;MOV P1,#0FFH
+	
+	MOV A,30H			;&#x6570;&#x7801;&#x7BA1;&#x663E;&#x793A;&#x5343;&#x4F4D;&#x6570;
+	MOVC A,@A+DPTR
+	MOV P0,A
+	SETB P1.0
+	ACALL DELAY
+	CLR P1.0
+	
+	MOV A,29H			;&#x6570;&#x7801;&#x7BA1;&#x663E;&#x793A;&#x767E;&#x4F4D;&#x6570;
+	MOVC A,@A+DPTR
+	MOV P0,A
+	SETB P1.1
+	ACALL DELAY
+	CLR P1.1
+	
+	MOV A,28H			;&#x6570;&#x7801;&#x7BA1;&#x663E;&#x793A;&#x5341;&#x4F4D;&#x6570;
+	MOVC A,@A+DPTR
+	MOV P0,A
+	SETB P1.2
+	ACALL DELAY
+	CLR P1.2
+	
+	MOV A,27H			;&#x6570;&#x7801;&#x7BA1;&#x663E;&#x793A;&#x4E2A;&#x4F4D;&#x6570;
+	MOVC A,@A+DPTR
+	MOV P0,A
+	SETB P1.3
+	ACALL DELAY
+	CLR P1.3
+	
+	
+	RET
+	
+;=========================================
+TAB:					;&#x6570;&#x7801;&#x7BA1;&#x663E;&#x793A;&#x6570;&#x5B57;&#x9700;&#x8981;&#x4F20;&#x5165;&#x7684;&#x503C;
+	DB	0C0H;0
+	DB	0F9H;1
+	DB	0A4H;2
+	DB	0B0H;3
+	DB	099H;4
+	DB	092H;5
+	DB	082H;6
+	DB	0F8H;7
+	DB	080H;8
+	DB	090H;9
+;=========================================
+DELAY:					;&#x5EF6;&#x65F6;&#x51FD;&#x6570;
+		MOV R6,#10H
+DEL1:
+		MOV R7,#10H
+		DJNZ R7,$
+		DJNZ R6,DEL1
+		RET
+;=========================================
+
+END
+</code></pre><p>&#x8702;&#x9E23;&#x5668;&#x5B9E;&#x9A8C;&#x786C;&#x4EF6;&#x90E8;&#x5206;<br>
+<img src="%E8%9C%82%E9%B8%A3%E5%99%A8.png" alt></p>
+<p>&#x8702;&#x9E23;&#x5668;&#x5B9E;&#x9A8C;&#x8F6F;&#x4EF6;&#x90E8;&#x5206;</p>
+<pre data-role="codeBlock" data-info="asm" class="language-asm"><code>PP EQU P0.0
+ORG 0000H
+LJMP START
+ORG 000BH
+INC 20H ;&#x4E2D;&#x65AD;&#x670D;&#x52A1;,&#x4E2D;&#x65AD;&#x8BA1;&#x6570;&#x5668;&#x52A0; 1
+MOV TH0,#0D8H
+MOV TL0,#0EFH ;12M &#x6676;&#x632F;&#xFF0C;&#x5F62;&#x6210; 10 &#x6BEB;&#x79D2;&#x4E2D;&#x65AD;
+RETI
+ORG 0100H
+START: 
+MOV SP,#50H ;SP&#xFF1A;&#x5806;&#x6808;&#x6307;&#x9488;&#x5BC4;&#x5B58;&#x5668;
+MOV TH0,#0D8H
+MOV TL0,#0EFH
+MOV TMOD,#01H ;&#x5B9A;&#x65F6;&#x5668; 0 &#x5DE5;&#x4F5C;&#x65B9;&#x5F0F; 1
+MOV IE,#82H ;&#x5F00;&#x603B;&#x4E2D;&#x65AD;&#x548C;&#x5B9A;&#x65F6;&#x5668; 0 &#x4E2D;&#x65AD;
+MUSIC0:
+NOP
+MOV DPTR,#DAT ;&#x8868;&#x5934;&#x5730;&#x5740;&#x9001; DPTR
+MOV 20H,#00H ;&#x4E2D;&#x65AD;&#x8BA1;&#x6570;&#x5668;&#x6E05; 0
+MUSIC1:
+NOP
+CLR A ;A;&#x6E05;&#x96F6;
+MOVC A,@A+DPTR ;&#x67E5;&#x8868;&#x53D6;&#x4EE3;&#x7801;
+JZ END0 ;&#x662F; 00H,&#x5219;&#x7ED3;&#x675F;
+CJNE A,#0FFH,MUSIC5 ;&#x5982;&#x679C;&#x662F;&#x4F11;&#x6B62;&#x7B26;&#xFF0C;&#x5F80;&#x4E0B;&#x6267;&#x884C;
+LJMP MUSIC3
+MUSIC5:
+NOP
+MOV R6,A ;R6=18H &#x97F3;&#x7B26;&#x7684;&#x9891;&#x7387;
+INC DPTR ;DPTR;&#x52A0; 1
+MOV A,#0
+MOVC A,@A+DPTR ;&#x53D6;&#x8282;&#x62CD;&#x4EE3;&#x7801;&#x9001; R7
+MOV R7,A ;R7=30H &#x97F3;&#x7B26;&#x53D1;&#x97F3;&#x7684;&#x65F6;&#x95F4;
+SETB TR0 ;&#x542F;&#x52A8;&#x8BA1;&#x6570;
+MUSIC2:
+NOP
+CPL PP ;&#x97F3;&#x4E50;&#x8F93;&#x51FA;&#x53E3;&#x63A7;&#x5236;
+MOV A,R6
+MOV R3,A ;R3=R6=18H
+LCALL DEL
+MOV A,R7
+CJNE A,20H,MUSIC2 ;&#x4E2D;&#x65AD;&#x8BA1;&#x6570;&#x5668;(20H)=R7 &#x5426;?
+ ;&#x4E0D;&#x7B49;,&#x5219;&#x7EE7;&#x7EED;&#x5FAA;&#x73AF;
+MOV 20H,#00H ;&#x7B49;&#x4E8E;,&#x5219;&#x53D6;&#x4E0B;&#x4E00;&#x4EE3;&#x7801;
+INC DPTR
+LJMP MUSIC1
+MUSIC3:
+NOP ;&#x4F11;&#x6B62; 100 &#x6BEB;&#x79D2;
+CLR TR0 
+MOV R2,#0DH ;R2=13
+MUSIC4:
+NOP
+MOV R3,#0FFH ;R3=255
+LCALL DEL
+DJNZ R2,MUSIC4
+INC DPTR
+LJMP MUSIC1
+END0:
+NOP
+MOV R2,#0FFH ;&#x6B4C;&#x66F2;&#x7ED3;&#x675F;,&#x5EF6;&#x65F6; 1 &#x79D2;&#x540E;&#x7EE7;&#x7EED;
+MUSIC6:
+MOV R3,#00H
+LCALL DEL
+DJNZ R2,MUSIC6
+LJMP MUSIC0
+DEL:
+NOP
+DEL3: 
+MOV R4,#02H
+DEL4: 
+NOP
+DJNZ R4,DEL4
+NOP
+DJNZ R3,DEL3
+RET
+NOP
+;&#x97F3;&#x5F8B;&#x7F16;&#x7801;&#xFF0C;&#x4F5C;&#x7528;&#x4E8E;&#x5B9A;&#x65F6;&#x65F6;&#x95F4;
+DAT:
+DB 30H,20H,2BH,10H,26H,10H
+DB 26H,20H,26H,20H,2BH,20H,30H,10H,2BH,10H,2BH,60H,30H,10H,2BH,10H
+DB 26H,20H,26H,20H,2BH,20H,30H,20H,30H,60H,40H,10H,39H,10H
+DB 40H,40H,40H,10H,40H,10H,39H,10H,30H,10H,30H,60H,30H,20H
+DB 30H,20H,30H,20H,30H,10H,2BH,10H,2BH,40H,30H,20H,2BH,10H,26H,10H
+DB 26H,20H,26H,20H,20H,20H,1CH,10H,2BH,10H,2BH,40H,26H,20H,2BH,10H,30H,10H
+DB 30H,20H,30H,20H,2BH,20H,26H,10H,20H,10H,20H,60H,40H,10H,40H,10H
+DB 39H,20H,30H,10H,30H,10H,30H,10H,26H,30H,2BH,20H,30H,20H,30H,20H,2BH,10H,30H,10H
+DB 30H,0C0H,26H,20H,26H,10H,20H,10H
+DB 20H,20H,20H,10H,20H,10H,20H,20H,20H,10H,1CH,10H,1CH,40H,26H,20H,2BH,20H
+DB 30H,20H,30H,20H,30H,20H,2BH,10H,26H,10H,26H,60H,26H,10H,20H,10H
+DB 20H,20H,20H,20H,20H,20H,1CH,10H,18H,10H,18H,20H,1CH,20H,20H,20H,26H,20H
+DB 2BH,20H,30H,20H,30H,20H,39H,10H,2BH,10H,2BH,60H,26H,10H,20H,10H
+DB 20H,20H,20H,20H,20H,10H,1CH,20H,20H,10H,1CH,40H,26H,20H,2BH,20H
+DB 30H,20H,30H,20H,30H,20H,2BH,10H,26H,10H,26H,60H,26H,10H,20H,10H
+DB 20H,20H,20H,20H,20H,20H,1CH,10H,18H,10H,18H,20H,1CH,20H,20H,20H,26H,10H,2BH,10H
+DB 2BH,20H,2BH,20H,2BH,80H,30H,10H,26H,20H,24H,10H
+DB 26H,20H,2BH,20H,2BH,80H,26H,20H,2BH,10H,30H,10H
+DB 30H,40H,26H,20H,2BH,10H,30H,10H,30H,40H,26H,20H,2BH,20H
+DB 26H,20H,30H,20H,26H,20H,1CH,10H,20H,10H,20H,60H,26H,10H,20H,10H
+DB 1CH,20H,1CH,10H,20H,10H,20H,20H,1CH,10H,20H,10H,20H,40H,26H,10H,2BH,10H,30H,20H
+DB 2BH,20H,2BH,10H,26H,10H,2BH,20H,30H,10H,2BH,10H,2BH,40H,26H,20H,2BH,10H,30H,10H
+DB 30H,40H,26H,20H,2BH,10H,30H,10H,30H,40H,26H,20H,2BH,20H
+DB 26H,20H,30H,20H,26H,10H,1CH,20H,20H,10H,20H,60H,26H,10H,20H,10H
+DB 1CH,20H,1CH,20H,18H,20H,20H,10H,1CH,10H,20H,30H,20H,10H,26H,10H,2BH,10H,30H,20H
+DB 2BH,40H,2BH,10H,30H,10H,2BH,10H,26H,10H,2BH,40H,26H,20H,26H,20H,2BH,60H,30H,20H,30H,0C0H
+DB 00H
+END
+</code></pre><p>&#x9047;&#x5230;&#x7684;&#x95EE;&#x9898;&#x4E0E;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>proteus&#x4EFF;&#x771F;&#x65F6;&#x8702;&#x9E23;&#x5668;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#xFF0C;&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x7535;&#x8DEF;&#x6D4B;&#x8BD5;&#x4E2D;&#x8702;&#x9E23;&#x5668;&#x7684;&#x58F0;&#x97F3;&#x602A;&#x602A;&#x7684;</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
